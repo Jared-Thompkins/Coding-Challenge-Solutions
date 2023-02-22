@@ -1,13 +1,17 @@
-# from typing import List
-#
-# class Solution:
-#     def productExceptSelf(self, nums: List[int]):
-#         length = len(nums)
-#
-#
-#
-#
-#         answer = 0
-#
-#         for i in nums:
-#                 answer += i
+from typing import List
+
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        result = []
+
+        acc = 1
+        for n in nums:
+            result.append(acc)
+            acc *= n
+
+        acc = 1
+        for i in reversed(range(len(nums))):
+            result[i] *= acc
+            acc *= nums[i]
+
+        return result
